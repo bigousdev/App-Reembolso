@@ -1,0 +1,57 @@
+{
+  "expo": {
+    "name": "Reembolso Viagem",
+    "slug": "App-Reembolso",
+    "version": "1.0.0",
+    "scheme": "reembolsoviagem",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.reembolsoviagem.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Precisamos da câmera para fotografar notas fiscais e recibos das despesas de viagem.",
+        "NSPhotoLibraryUsageDescription": "Precisamos acessar suas fotos para anexar comprovantes já fotografados."
+      }
+    },
+    "android": {
+      "package": "com.reembolsoviagem.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.READ_MEDIA_IMAGES"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-sqlite",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Precisamos acessar suas fotos para anexar comprovantes já fotografados.",
+          "cameraPermission": "Precisamos da câmera para fotografar notas fiscais e recibos das despesas de viagem."
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#ffffff",
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 200
+        }
+      ]
+    ]
+  }
+}
