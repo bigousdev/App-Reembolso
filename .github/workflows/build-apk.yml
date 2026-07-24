@@ -40,12 +40,12 @@ jobs:
             ~/.gradle/wrapper
           key: gradle-${{ runner.os }}-${{ hashFiles('android/gradle/wrapper/gradle-wrapper.properties') }}
 
-      - name: Build debug APK
+      - name: Build release APK
         working-directory: android
-        run: ./gradlew assembleDebug --no-daemon
+        run: ./gradlew assembleRelease --no-daemon
 
       - name: Rename APK
-        run: cp android/app/build/outputs/apk/debug/app-debug.apk reembolso-viagem-teste.apk
+        run: cp android/app/build/outputs/apk/release/app-release.apk reembolso-viagem-teste.apk
 
       - name: Publish release with APK
         uses: softprops/action-gh-release@v2
@@ -53,8 +53,9 @@ jobs:
           tag_name: apk-teste-${{ github.run_number }}
           name: "APK de teste #${{ github.run_number }}"
           body: |
-            APK de teste (build debug, não otimizado/assinado para produção) gerado automaticamente
-            a partir do commit ${{ github.sha }}.
+            APK de teste (build release assinado com a chave de debug padrão — não é o build
+            para publicar na Play Store, só para instalar manualmente e testar) gerado
+            automaticamente a partir do commit ${{ github.sha }}.
 
             Para instalar: baixe o arquivo `reembolso-viagem-teste.apk` abaixo pelo navegador do
             celular e toque nele para instalar (é necessário permitir "instalar apps de fontes
